@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 
     .beer-info {
         display: flex;
@@ -43,6 +42,7 @@
 
 @media only screen and (max-width: 960px) {
     .beer-detail-container {
+        text-align: center;
         padding: 0px 10px;
         .beer-info {
             width: 100vw;
