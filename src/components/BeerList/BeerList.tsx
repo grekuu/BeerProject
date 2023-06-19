@@ -5,7 +5,6 @@ import './beerList.scss'
 
 const BeerList = () => {
     const beer = useAppSelector(selectBeer)
-    console.log(beer)
 
     return (
         <div className="container-sm beer-wrapper">

@@ -55,12 +55,14 @@ interface BeerState {
     beer: BeerType[]
     selectedBeer: BeerType[]
     page: number
+    showFooter: boolean
 }
 
 const initialState: BeerState = {
     beer: [],
     selectedBeer: [],
     page: 1,
+    showFooter: true,
 }
 
 export const beerSlice = createSlice({
@@ -72,6 +74,9 @@ export const beerSlice = createSlice({
         },
         updatePage: (state, action: PayloadAction<number>) => {
             state.page = action.payload
+        },
+        setShowFooter: (state, action: PayloadAction<boolean>) => {
+            state.showFooter = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -85,17 +90,17 @@ export const beerSlice = createSlice({
         //Single Beer
         builder.addCase(fetchAsyncSingleBeer.pending, () => {})
         builder.addCase(fetchAsyncSingleBeer.fulfilled, (state, { payload }) => {
-            console.log(payload)
             state.selectedBeer = payload
         })
         builder.addCase(fetchAsyncSingleBeer.rejected, () => {})
     },
 })
 
-export const { removeSelectedBeer, updatePage } = beerSlice.actions
+export const { removeSelectedBeer, updatePage, setShowFooter } = beerSlice.actions
 
 export const selectBeer = (state: RootState) => state.beer.beer
 export const selectSingleBeer = (state: RootState) => state.beer.selectedBeer
 export const selectPage = (state: RootState) => state.beer.page
+export const selectShowFooter = (state: RootState) => state.beer.showFooter
 
 export default beerSlice.reducer

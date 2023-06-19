@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import './beerDetail.scss'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { fetchAsyncSingleBeer, removeSelectedBeer, selectSingleBeer } from '../../redux/beerSlice'
+import { fetchAsyncSingleBeer, removeSelectedBeer, selectSingleBeer, setShowFooter } from '../../redux/beerSlice'
 
 const BeerDetail = () => {
     const { beerId } = useParams()
@@ -11,8 +11,10 @@ const BeerDetail = () => {
 
     useEffect(() => {
         dispatch(fetchAsyncSingleBeer(beerId!))
+        dispatch(setShowFooter(false))
         return () => {
             dispatch(removeSelectedBeer())
+            dispatch(setShowFooter(true))
         }
     }, [dispatch, beerId])
 
@@ -36,8 +38,8 @@ const BeerDetail = () => {
                             <div>
                                 <b>Malt:</b>
                                 <ul>
-                                    {selectedBeer.ingredients.malt.map((malt) => (
-                                        <li key={malt.name}>
+                                    {selectedBeer.ingredients.malt.map((malt, id) => (
+                                        <li key={id}>
                                             {malt.name} - {malt.amount.value} {malt.amount.unit}
                                         </li>
                                     ))}
@@ -46,8 +48,8 @@ const BeerDetail = () => {
                             <div>
                                 <b>Hops:</b>
                                 <ul>
-                                    {selectedBeer.ingredients.hops.map((hop) => (
-                                        <li key={hop.name}>
+                                    {selectedBeer.ingredients.hops.map((hop, id) => (
+                                        <li key={id}>
                                             {hop.name} - {hop.amount.value} {hop.amount.unit} - {hop.add} -{' '}
                                             {hop.attribute}
                                         </li>

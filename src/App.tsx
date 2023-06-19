@@ -6,8 +6,11 @@ import Home from './components/Home/Home'
 import BeerDetail from './components/BeerDetail/BeerDetail'
 import PageNotFound from './components/PageNotFound/PageNotFound'
 import Footer from './components/Footer/Footer'
+import { useAppSelector } from './redux/hooks'
+import { selectShowFooter } from './redux/beerSlice'
 
 function App() {
+    const showFooter = useAppSelector(selectShowFooter)
     return (
         <>
             <Router>
@@ -17,7 +20,7 @@ function App() {
                     <Route path="/details/:beerId" element={<BeerDetail />}></Route>
                     <Route path="*" element={<PageNotFound />}></Route>
                 </Routes>
-                <Footer />
+                {showFooter ? <Footer /> : <></>}
             </Router>
         </>
     )
