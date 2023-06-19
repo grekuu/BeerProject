@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import beerApi from '../common/beerApi'
 
-export const fetchAsyncBeer = createAsyncThunk('beer/fetchAsyncBeer', async () => {
-    const response = await beerApi.get('/beers?page=1&per_page=12')
+export const fetchAsyncBeer = createAsyncThunk('beer/fetchAsyncBeer', async (page: number) => {
+    const response = await beerApi.get(`/beers?page=${page}&per_page=12`)
     return response.data
 })
 

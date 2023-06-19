@@ -8,7 +8,7 @@ const Home = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        dispatch(fetchAsyncBeer())
+        dispatch(fetchAsyncBeer(1))
     }, [dispatch])
 
     return (

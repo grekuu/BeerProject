@@ -22,4 +22,9 @@
         background-color: #f5b959;
         @include flexCenter();
     }
+
+    .alert {
+        position: fixed;
+        top: 0;
+    }
 }
