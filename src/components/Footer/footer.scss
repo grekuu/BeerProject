@@ -1,0 +1,25 @@
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    max-width: 100vw;
+    height: 15vh;
+    @include flexCenter();
+
+    .arrow-icon {
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .page-number {
+        width: 23px;
+        height: 23px;
+        border-radius: 3px;
+        color: white;
+        background-color: #f5b959;
+        @include flexCenter();
+    }
+}
