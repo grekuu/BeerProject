@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 import beerApi from '../common/beerApi'
 
@@ -54,11 +54,13 @@ export interface BeerType {
 interface BeerState {
     beer: BeerType[]
     selectedBeer: BeerType[]
+    page: number
 }
 
 const initialState: BeerState = {
     beer: [],
     selectedBeer: [],
+    page: 1,
 }
 
 export const beerSlice = createSlice({
@@ -67,6 +69,9 @@ export const beerSlice = createSlice({
     reducers: {
         removeSelectedBeer: (state) => {
             state.selectedBeer = []
+        },
+        updatePage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -87,9 +92,10 @@ export const beerSlice = createSlice({
     },
 })
 
-export const { removeSelectedBeer } = beerSlice.actions
+export const { removeSelectedBeer, updatePage } = beerSlice.actions
 
 export const selectBeer = (state: RootState) => state.beer.beer
 export const selectSingleBeer = (state: RootState) => state.beer.selectedBeer
+export const selectPage = (state: RootState) => state.beer.page
 
 export default beerSlice.reducer

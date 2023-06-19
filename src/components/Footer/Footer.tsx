@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import './footer.scss'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
-import { useAppDispatch } from '../../redux/hooks'
-import { fetchAsyncBeer } from '../../redux/beerSlice'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { fetchAsyncBeer, selectPage, updatePage } from '../../redux/beerSlice'
 
 const Footer = () => {
     const dispatch = useAppDispatch()
-    const [page, setPage] = useState(1)
     const [unclickable, setUnclickable] = useState(false)
+    const page = useAppSelector(selectPage)
 
     useEffect(() => {
         dispatch(fetchAsyncBeer(page))
@@ -19,11 +19,11 @@ const Footer = () => {
     }, [dispatch, page])
 
     function handlePreviousPage() {
-        setPage(page - 1)
+        dispatch(updatePage(page - 1))
     }
 
     function handleNextPage() {
-        setPage(page + 1)
+        dispatch(updatePage(page + 1))
     }
 
     return (
