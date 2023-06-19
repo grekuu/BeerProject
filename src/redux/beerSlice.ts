@@ -1,26 +1,46 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from './store'
+import beerApi from '../common/beerApi'
+
+export const fetchAsyncBeer = createAsyncThunk('beer/fetchAsyncBeer', async () => {
+    const response = await beerApi.get('/beers?page=1&per_page=12')
+    return response.data
+})
+
+export interface BeerType {
+    id: number
+    image_url: string
+    name: string
+    tagline: string
+    description: string
+    abv: number
+    ibu: number
+    ingrediends: any[]
+}
 
 interface BeerState {
-    value: number
+    beer: BeerType[]
 }
 
 const initialState: BeerState = {
-    value: 0,
+    beer: [],
 }
 
 export const beerSlice = createSlice({
     name: 'beer',
     initialState,
-    reducers: {
-        increment: (state) => {
-            state.value += 1
-        },
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchAsyncBeer.pending, () => {})
+        builder.addCase(fetchAsyncBeer.fulfilled, (state, { payload }) => {
+            state.beer = payload
+        })
+        builder.addCase(fetchAsyncBeer.rejected, () => {})
     },
 })
 
-export const { increment } = beerSlice.actions
+export const {} = beerSlice.actions
 
-export const selectCount = (state: RootState) => state.beer.value
+export const selectBeer = (state: RootState) => state.beer.beer
 
 export default beerSlice.reducer

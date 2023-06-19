@@ -1,0 +1,23 @@
+.beer-wrapper {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 36px;
+    max-width: 40vw;
+    margin: auto;
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 960px) {
+    .beer-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .beer-wrapper {
+        max-width: 60vw;
+    }
+}
