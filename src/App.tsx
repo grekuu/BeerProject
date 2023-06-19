@@ -1,16 +1,22 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './index.scss'
-import { increment, selectCount } from './redux/beerSlice'
-import { useAppDispatch, useAppSelector } from './redux/hooks'
+import Header from './components/Header/Header'
+import Home from './components/Home/Home'
+import BeerDetail from './components/BeerDetail/BeerDetail'
+import PageNotFound from './components/PageNotFound/PageNotFound'
 
 function App() {
-    const dispatch = useAppDispatch()
-    const beerValue = useAppSelector(selectCount)
-
     return (
-        <div>
-            <button onClick={() => dispatch(increment())}></button>
-            <div>{beerValue}</div>
-        </div>
+        <>
+            <Router>
+                <Header></Header>
+                <Routes>
+                    <Route path="/" element={<Home />}></Route>
+                    <Route path="/details/:beerId" element={<BeerDetail />}></Route>
+                    <Route path="*" element={<PageNotFound />}></Route>
+                </Routes>
+            </Router>
+        </>
     )
 }
 

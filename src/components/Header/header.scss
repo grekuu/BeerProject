@@ -1,0 +1,12 @@
+.header {
+    width: 100vw;
+    height: 15vh;
+    background: linear-gradient(90deg, rgba(126, 107, 160, 1) 0%, rgba(125, 148, 182, 1) 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffa415;
+    font-size: 30px;
+    font-weight: bold;
+}

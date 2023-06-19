@@ -1,7 +1,7 @@
 import './header.scss'
 
 const Header = () => {
-    return <div>Header</div>
+    return <div className="header">Beers</div>
 }
 
 export default Header
