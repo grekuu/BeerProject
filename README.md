@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Exlabs Task
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for the recruitment.
 
 ## Available Scripts
 
