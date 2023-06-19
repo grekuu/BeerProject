@@ -1,0 +1,29 @@
+.beer-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .beer-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 30vw;
+
+        .tagline {
+            font-size: 18px;
+        }
+
+        img {
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .name {
+            font-size: 24px;
+        }
+
+        .description {
+            color: gray;
+        }
+    }
+}

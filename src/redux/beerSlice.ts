@@ -12,6 +12,34 @@ export const fetchAsyncSingleBeer = createAsyncThunk('beer/fetchAsyncSingleBeer'
     return response.data
 })
 
+export interface Malt {
+    name: string
+    amount: {
+        value: number
+        unit: string
+    }
+}
+
+export interface Hop {
+    name: string
+    amount: {
+        value: number
+        unit: string
+    }
+    add: string
+    attribute: string
+}
+
+export interface Yeast {
+    name: string
+}
+
+export interface Ingredients {
+    malt: Malt[]
+    hops: Hop[]
+    yeast: Yeast
+}
+
 export interface BeerType {
     id: number
     image_url: string
@@ -20,7 +48,7 @@ export interface BeerType {
     description: string
     abv: number
     ibu: number
-    ingrediends: any[]
+    ingredients: Ingredients
 }
 
 interface BeerState {

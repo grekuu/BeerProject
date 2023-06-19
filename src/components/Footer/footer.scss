@@ -23,8 +23,8 @@
         @include flexCenter();
     }
 
-    .alert {
-        position: fixed;
-        top: 0;
+    .unclickable {
+        color: gray;
+        pointer-events: none;
     }
 }
