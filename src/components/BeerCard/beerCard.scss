@@ -28,8 +28,10 @@
         height: 150px;
     }
 
-    .tagline h5 {
+    .tagline,
+    h5 {
         text-decoration: none;
+        color: gray;
     }
 
     .tagline {
@@ -39,7 +41,6 @@
     h5 {
         font-size: 14px;
         font-weight: bold;
-        color: gray;
     }
 }
 
