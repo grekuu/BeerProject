@@ -1,15 +1,16 @@
 import { useEffect } from 'react'
-import { useAppDispatch } from '../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import './home.scss'
-import { fetchAsyncBeer } from '../../redux/beerSlice'
+import { fetchAsyncBeer, selectPage } from '../../redux/beerSlice'
 import BeerList from '../BeerList/BeerList'
 
 const Home = () => {
     const dispatch = useAppDispatch()
+    const page = useAppSelector(selectPage)
 
     useEffect(() => {
-        dispatch(fetchAsyncBeer(1))
-    }, [dispatch])
+        dispatch(fetchAsyncBeer(page))
+    }, [dispatch, page])
 
     return (
         <>
